@@ -180,8 +180,8 @@ $cart_list = cart_list();
 						</tr>
 
 						<?php
+						$sub_total = null;
 						if (!empty($cart_list)) {
-							$sub_total = null;
 							foreach ($cart_list as $item_id => $item_qty) {
 								echo '<tr class="table-row">';
 								echo '<td class="column-1">';
@@ -206,6 +206,9 @@ $cart_list = cart_list();
 									if (!empty($item_qty['price_to'])) {
 										echo $product_array[$item_id]['price'] * $item_qty['price_to'];
 										$sub_total += $product_array[$item_id]['price'] * $item_qty['price_to'];
+									}else{
+										echo $product_array[$item_id]['price'] * $item_qty['qty'];
+										$sub_total += $product_array[$item_id]['price'] * $item_qty['qty'];
 									}
 								}
 								elseif ($item_id == 4) {
